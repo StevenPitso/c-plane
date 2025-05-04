@@ -1,8 +1,3 @@
-
-
----
-
-```markdown
 # 🚧 C-Plane Graph Plotter (Inspired by Desmos)
 
 This is a work-in-progress, canvas-based graphing calculator built with vanilla JavaScript. It's inspired by **Desmos**, but designed to run entirely in the browser without frameworks or dependencies.
@@ -24,21 +19,20 @@ This is a work-in-progress, canvas-based graphing calculator built with vanilla 
 ## 📁 File Structure
 
 ```
-
 project-root/
 │
-├── index.html              # HTML layout with input fields and canvas
-├── main.js                 # Main JS: handles drawing, UI, animation
+├── index.html # HTML layout with input fields and canvas
+├── main.js # Main JS: handles drawing, UI, animation
 │
 ├── Math/
-│   ├── equation.js         # Equation class — parses and plots equations
-│   ├── point.js            # (Optional) point class for future features
-│   └── segment.js          # (Optional) segment class for drawing lines
+│ ├── equation.js # Equation class — parses and plots equations
+│ ├── point.js # (Optional) point class for future features
+│ └── segment.js # (Optional) segment class for drawing lines
 │
 └── UI/
-└── c-plane.js          # Cplane class — draws axes, grid, and ticks
-
+└── c-plane.js # Cplane class — draws axes, grid, and ticks
 ```
+
 
 ---
 
@@ -55,7 +49,7 @@ project-root/
 ## 🧪 Try These Inputs
 
 | Input               | Description         |
-|--------------------|---------------------|
+|---------------------|---------------------|
 | `2x + 1`            | Straight line       |
 | `x**2`              | Parabola            |
 | `x**3 - 3x`         | Cubic curve         |
@@ -74,7 +68,7 @@ project-root/
 
 ## 🚀 Getting Started
 
-You don’t need to install anything. Just:
+You don't need to install anything. Just:
 
 1. Clone or download the repository.
 2. Open `index.html` in any modern browser.
@@ -112,6 +106,3 @@ Unlicensed / For educational and experimental use.
 ---
 
 > Made with ❤️ and math.
-```
-
-
