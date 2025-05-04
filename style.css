@@ -1,0 +1,10 @@
+html{
+    padding: 0;
+}
+body{
+    position: relative;
+}
+#canvas{
+    background:#f3f3f3;
+    position: relative;
+}
