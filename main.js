@@ -53,3 +53,4 @@ zoomSlider.addEventListener("input", () => {
 });
 
 animate();
+   
