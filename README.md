@@ -68,7 +68,7 @@ project-root/
 
 ## 🖼️ Demo Preview
 
-> _(Insert a screenshot or recording here once you have one!)_
+> ![Image.png](Assets/image.png)
 
 ---
 
