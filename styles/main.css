@@ -40,3 +40,198 @@ html, body, #app {
 }
 
 #plane.dragging { cursor: grabbing; }
+
+
+/* ─── Expression list ─────────────────────────────────────────────── */
+
+.expr-row {
+  display: grid;
+  grid-template-columns: 24px 28px 1fr 28px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+}
+
+.expr-row--hidden {
+  opacity: 0.45;
+}
+
+.expr-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  transition: transform 0.1s;
+}
+
+.expr-dot:hover { transform: scale(1.15); }
+
+.expr-label {
+  font-size: 13px;
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.expr-input {
+  width: 100%;
+  background: #0f1115;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  color: #e2e8f0;
+  padding: 6px 8px;
+  font: 13px/1.4 ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  transition: border-color 0.15s;
+}
+
+.expr-input:focus {
+  outline: none;
+  border-color: #7dd3fc;
+}
+
+.expr-delete {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+}
+
+.expr-delete:hover { background: #2a2a2a; color: #f87171; }
+
+.expr-error {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: #f87171;
+  padding-top: 4px;
+  padding-left: 60px;
+}
+
+.expr-add {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  background: transparent;
+  border: 1px dashed #334155;
+  border-radius: 6px;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+}
+
+.expr-add:hover {
+  border-color: #7dd3fc;
+  color: #7dd3fc;
+}
+
+
+
+/* ─── Toolbar ─────────────────────────────────────────────────────── */
+
+#toolbar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.toolbar-btn {
+  padding: 6px 10px;
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  color: #cbd5e1;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.toolbar-btn:hover {
+  border-color: #7dd3fc;
+  color: #7dd3fc;
+}
+
+/* ─── Status bar ─────────────────────────────────────────────────── */
+
+#status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(15, 17, 21, 0.92);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid #1e2430;
+  font: 12px/1.4 ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  color: #94a3b8;
+  user-select: none;
+  z-index: 5;
+}
+
+.status-item {
+  white-space: pre;   /* preserve the wide spacing in "x: 2.31    y: -0.72" */
+}
+
+.status-live {
+  margin-left: auto;
+  color: #4ade80;
+}
+
+/* Adjust canvas so its bottom isn't covered by the status bar */
+#plane {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 30px;  /* not applicable to canvas; adjust via wrapper instead */
+}
+
+
+
+
+
+
+
+
+#viewport {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#canvas-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 0;   /* flexbox + overflow quirk */
+}
+
+#plane {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#status-bar {
+  position: relative;   /* not absolute anymore */
+  /* ... rest unchanged */
+}

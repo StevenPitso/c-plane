@@ -49,6 +49,7 @@ export class Renderer {
     else if (norm < 3) nice = 2;
     else if (norm < 7) nice = 5;
     else nice = 10;
+
     return nice * mag;
 
   }
@@ -73,6 +74,38 @@ export class Renderer {
     this._drawGrid(step, topLeft, botRight);
     this._drawAxes();
 
+  }
+
+    // Draw a sampled function. Breaks the path at null entries.
+  // Call this AFTER _drawGrid() and _drawAxes().
+  drawFunction(samples, color) {
+
+    const { ctx, width, height, camera } = this;
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+    ctx.beginPath();
+    let drawing = false;
+
+    for (const s of samples) {
+
+      if (!s) { drawing = false; continue; }
+
+      const p = camera.worldToScreen(s.x, s.y, width, height);
+
+      if (!drawing) {
+
+        ctx.moveTo(p.x, p.y);
+        drawing = true;
+
+      } else {
+        ctx.lineTo(p.x, p.y);
+      }
+    }
+    ctx.stroke();
   }
 
   _drawGrid(step, tl, br) {
@@ -119,7 +152,9 @@ export class Renderer {
       const sub = step / 2;
 
       for (let x = startX; x <= br.x; x += sub) {
+
         const p = camera.worldToScreen(x, 0, width, height);
+        
         ctx.moveTo(p.x, 0);
         ctx.lineTo(p.x, height);
       }
@@ -155,6 +190,28 @@ export class Renderer {
     }
 
     ctx.stroke();
+  }
+
+  draw(curves = []) {
+
+    const { ctx, width, height } = this;
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = '#0f1115';
+    ctx.fillRect(0, 0, width, height);
+
+    const step = this._niceStep();
+    const tl = this.camera.screenToWorld(0, 0, width, height);
+    const br = this.camera.screenToWorld(width, height, width, height);
+
+    this._drawGrid(step, tl, br);
+    this._drawAxes();
+
+    for (const { samples, color } of curves) {
+      this.drawFunction(samples, color);
+    }
+
+
   }
 
 }

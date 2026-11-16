@@ -3,11 +3,15 @@ export class Camera {
 
 
   constructor({ x = 0, y = 0, scale = 60 } = {}) {
+
     this.x = x;          // world coord at viewport center
     this.y = y;
+
     this.scale = scale;  // pixels per world unit
+
     this.minScale = 2;
     this.maxScale = 5000;
+    
   }
 
   worldToScreen(wx, wy, width, height) {
