@@ -62,7 +62,7 @@ project-root/
 
 ## 🖼️ Demo Preview
 
-> ![Image.png](Assets/image.png)
+> ![Image.png](demos/image.png)
 
 ---
 
