@@ -1,108 +1,48 @@
-# 🚧 C-Plane Graph Plotter (Inspired by Desmos)
+# C-Plane
 
-This is a work-in-progress, canvas-based graphing calculator built with vanilla JavaScript. It's inspired by **Desmos**, but designed to run entirely in the browser without frameworks or dependencies.
+**A graphing engine built from scratch with JavaScript and HTML Canvas.**
 
-> ✨ It's not finished yet — but we will get there.
+It has been about a year since I last touched this codebase.
 
----
+When I first built C-Plane, I was mainly interested in making something that worked. I wanted to draw a coordinate plane, take an equation, evaluate it, and put the result on a Canvas. At the time, that was enough.
 
-## 🔍 Features
+A year later, I've come back to the project with a very different understanding of software development.
 
-- 📈 Plot custom user equations like `2x + 1`, `x**2`, `Math.sin(x)`, etc.
-- 🧮 Coordinate plane rendered manually using the HTML5 `<canvas>`.
-- 🖊️ Live equation editing — changes update the graph in real time.
-- 🔍 Zoom control via slider.
-- 🌀 Smooth animation loop using `requestAnimationFrame()`.
+Since then, I've worked with larger codebases, built applications from scratch, worked with APIs and databases, written code in multiple languages, and spent much more time thinking about **architecture, abstractions, algorithms, and what is actually happening underneath the tools I use.**
 
----
+So instead of simply adding another feature to the old version, I'm rebuilding C-Plane.
 
-## 📁 File Structure
+## A year apart
 
-```
-project-root/
-│
-├── index.html # HTML layout with input fields and canvas
-├── main.js # Main JS: handles drawing, UI, animation
-│
-├── Math/
-│ ├── equation.js # Equation class — parses and plots equations
-│ ├── point.js # (Optional) point class for future features
-│ └── segment.js # (Optional) segment class for drawing lines
-│
-└── UI/
-└── c-plane.js # Cplane class — draws axes, grid, and ticks
-```
+C-Plane has two versions: the original project that I built a year ago and the new implementation I'm working on today.
 
+| Original | Rebuilt |
+|---|---|
+| [C-Plane v1](https://github.com/StevenPitso/C-plane/tree/main) | [C-Plane v2](https://github.com/StevenPitso/C-plane) |
+| Initial graphing prototype | Rebuilt graphing engine |
+| Basic equation evaluation | Custom mathematical engine |
+| Early Canvas implementation | More deliberate rendering architecture |
 
----
+The screenshots below capture the difference between where the project started and where it's heading.
 
-## 💻 How It Works
+![C-Plane: Original and rebuilt versions](demos/images.png)
 
-1. User types an equation (e.g. `x**2 + 3x + 2`) into the input box.
-2. The input string is parsed into a JavaScript function (e.g. via `eval`).
-3. The equation is sampled over a range of x-values to produce points.
-4. Points are converted into canvas coordinates based on zoom level.
-5. The graph is drawn onto the custom coordinate plane.
+*Same project, roughly a year apart. A reminder of how much can change when you revisit something with more experience.*
 
----
+## What changed?
 
-## 🧪 Try These Inputs
+The original version was essentially:
 
-| Input               | Description         |
-|---------------------|---------------------|
-| `2x + 1`            | Straight line       |
-| `x**2`              | Parabola            |
-| `x**3 - 3x`         | Cubic curve         |
-| `Math.sin(x)`       | Sine wave           |
-| `Math.exp(x)`       | Exponential growth  |
+> **input → evaluate → draw**
 
-> ✅ Supports `Math` functions like `Math.sin`, `Math.cos`, `Math.exp`, etc.
+And that was fine for where I was at the time.
 
----
+But looking back at the code now, I can see how much of the complexity was being hidden or avoided.
 
-## 🖼️ Demo Preview
+The old implementation relied heavily on JavaScript's own evaluation capabilities. The coordinate system, graph rendering, input handling, and mathematical logic were also much more tightly coupled than I would design them today.
 
-> ![Image.png](demos/image.png)
+That is exactly why I decided to come back to it.
 
----
+I don't want C-Plane to be another project where I import a mathematical library, call a graphing function, and move on.
 
-## 🚀 Getting Started
-
-You don't need to install anything. Just:
-
-1. Clone or download the repository.
-2. Open `index.html` in any modern browser.
-3. Type your equation and adjust the zoom to see the plot.
-
----
-
-## 🧱 Future Roadmap
-
-- [ ] Mouse-based panning
-- [ ] Multiple equations
-- [ ] Axes labels and grid numbers
-- [ ] Improved input validation
-- [ ] Export graph to image
-- [ ] Dark mode
-
----
-
-## 💡 Inspiration
-
-This project is a learning experiment and creative tribute to **[Desmos](https://www.desmos.com/)** — a truly amazing graphing tool. This version explores how far you can go using raw JavaScript, canvas rendering, and a bit of imagination.
-
----
-
-## 🤝 Contributing
-
-Not actively open to contributions just yet — but if you're curious or want to collaborate, feel free to reach out or fork the repo!
-
----
-
-## ⚖️ License
-
-Unlicensed / For educational and experimental use.
-
----
-
-> Made with ❤️ and math.
+I want to understand how the thing actually works.
