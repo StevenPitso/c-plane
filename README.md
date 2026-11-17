@@ -25,7 +25,7 @@ C-Plane has two versions: the original project that I built a year ago and the n
 
 The screenshots below capture the difference between where the project started and where it's heading.
 
-![C-Plane: Original and rebuilt versions](demos/images.png)
+![C-Plane: Original and rebuilt versions](demos/image.png)
 
 *Same project, roughly a year apart. A reminder of how much can change when you revisit something with more experience.*
 
